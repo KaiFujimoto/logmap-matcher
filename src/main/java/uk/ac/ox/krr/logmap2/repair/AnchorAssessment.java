@@ -432,7 +432,7 @@ public class AnchorAssessment {
 			LogOutput.print("Remaining hard cases onto from small projection (1 Iter): " + hard_cases_still2solve);
 			
 			fin1 = Calendar.getInstance().getTimeInMillis();
-			LogOutput.print("\tTime ckecking satisfiability with D&G (Small projection, simple cases) (s): " + (float)((double)fin1-(double)init1)/1000.0);
+			LogOutput.print("\tTime checking satisfiability with D&G (Small projection, simple cases) (s): " + (float)((double)fin1-(double)init1)/1000.0);
 
 		
 			//HARD CASES
@@ -456,7 +456,7 @@ public class AnchorAssessment {
 				LogOutput.print("Remaining hard cases onto from small projection (2 Iter): " + hard_cases_still2solve);
 				
 				fin1 = Calendar.getInstance().getTimeInMillis();
-				LogOutput.print("\tTime ckecking satisfiability with D&G (Small projection, hard cases) (s): " + (float)((double)fin1-(double)init1)/1000.0);
+				LogOutput.print("\tTime checking satisfiability with D&G (Small projection, hard cases) (s): " + (float)((double)fin1-(double)init1)/1000.0);
 			
 			}
 		}
@@ -491,7 +491,7 @@ public class AnchorAssessment {
 		
 		
 		fin1 = Calendar.getInstance().getTimeInMillis();
-		LogOutput.print("\tTime ckecking satisfiability with D&G (Big projection, simple cases) (s): " + (float)((double)fin1-(double)init1)/1000.0);
+		LogOutput.print("\tTime checking satisfiability with D&G (Big projection, simple cases) (s): " + (float)((double)fin1-(double)init1)/1000.0);
 
 		
 		
@@ -517,7 +517,7 @@ public class AnchorAssessment {
 			LogOutput.print("REMAINING HARD CASES for all onto (2 Iter): " + hard_cases_still2solve);
 			
 			fin1 = Calendar.getInstance().getTimeInMillis();
-			LogOutput.print("Time ckecking satisfiability with D&G (Big projection, hard cases) (s): " + (float)((double)fin1-(double)init1)/1000.0);
+			LogOutput.print("Time checking satisfiability with D&G (Big projection, hard cases) (s): " + (float)((double)fin1-(double)init1)/1000.0);
 
 		}		
 		
@@ -725,7 +725,7 @@ public class AnchorAssessment {
 		
 		
 		fin1 = Calendar.getInstance().getTimeInMillis();
-		LogOutput.print("\tTime ckecking satisfiability with D&G (Big projection, simple cases) (s): " + (float)((double)fin1-(double)init1)/1000.0);
+		LogOutput.print("\tTime checking satisfiability with D&G (Big projection, simple cases) (s): " + (float)((double)fin1-(double)init1)/1000.0);
 
 		
 		
@@ -751,7 +751,7 @@ public class AnchorAssessment {
 			LogOutput.print("REMAINING HARD CASES for all onto (2 Iter): " + hard_cases_still2solve);
 			
 			fin1 = Calendar.getInstance().getTimeInMillis();
-			LogOutput.print("Time ckecking satisfiability with D&G (Big projection, hard cases) (s): " + (float)((double)fin1-(double)init1)/1000.0);
+			LogOutput.print("Time checking satisfiability with D&G (Big projection, hard cases) (s): " + (float)((double)fin1-(double)init1)/1000.0);
 
 		}		
 		
@@ -937,7 +937,7 @@ public class AnchorAssessment {
 		
 		
 		fin1 = Calendar.getInstance().getTimeInMillis();
-		LogOutput.print("\tTime ckecking satisfiability with D&G (Small projection, simple cases) (s): " + (float)((double)fin1-(double)init1)/1000.0);
+		LogOutput.print("\tTime checking satisfiability with D&G (Small projection, simple cases) (s): " + (float)((double)fin1-(double)init1)/1000.0);
 
 		
 		
