@@ -19,6 +19,11 @@
 package uk.ac.ox.krr.logmap2;
 
 import uk.ac.ox.krr.logmap2.oaei.reader.MappingsReaderManager;
+
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
+
 import uk.ac.ox.krr.logmap2.oaei.FromRDFAlign2OWL;
 
 
@@ -29,12 +34,13 @@ public class LogMap2_CommandLine {
 		return "LogMap 2 can operate as an ontology matching systems (MATCHER) or as a mapping debugging system (DEBUGGER). " +
 				"Additionally it also converts mappings from RDF-OAEI format to OWL.\n\n" +
 	
-				"LogMap 2 MATCHER facility requires 5 parameters:\n" +
+				"LogMap 2 MATCHER facility requires 6 parameters:\n" +
 				"\t1. MATCHER. To use the matching functionality.\n" +
 				"\t2. IRI ontology 1. e.g.: http://myonto1.owl  or  file:/C://myonto1.owl  or  file:/usr/local/myonto1.owl\n" +
 				"\t3. IRI ontology 2. e.g.: http://myonto2.owl  or  file:/C://myonto2.owl  or  file:/usr/local/myonto2.owl\n" +
 				"\t4. Full output path for mapping files and overlapping modules/fragments. e.g. /usr/local/output_path/ or C://output_path/\n" +
 				"\t5. Classify the input ontologies together with the mappings. e.g. true or false\n\n" +
+				"\t6. Filename to use for output, defaults to logmap2_mappings.*" +
 				"\tFor example: java -jar logmap2_standalone.jar MATCHER file:/home/ontos/cmt.owl file:/home/ontos/ekaw.owl /home/mappings/output true\n\n\n" +
 				
 				"LogMap 2 EVALUATION facility requires 6 parameters:\n" +
@@ -79,6 +85,8 @@ public class LogMap2_CommandLine {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
+		
 
 		try{
 			
@@ -99,11 +107,13 @@ public class LogMap2_CommandLine {
 						
 			else if (args[0].equals("MATCHER")){
 				
-				if (args.length!=5){
+				if (args.length!=6){
 					System.out.println(getHelpMessage());				
 				}
-				else {				
-					new LogMap2_Matcher(args[1], args[2], args[3], Boolean.valueOf(args[4]));
+				else 
+				{
+					
+					new LogMap2_Matcher(args[1], args[2], args[3],Boolean.valueOf(args[4]),args[5]);
 					
 				}
 				

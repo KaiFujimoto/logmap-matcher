@@ -99,6 +99,7 @@ public class LogMap2Core {
 
 	private String prefix4IRIs;
 	private String logmap_mappings_path="";
+	private String logmap_mappings_filename="logmap2_mappings";
 	private String gs_mappings="";
 	
 	long init;
@@ -134,7 +135,7 @@ public class LogMap2Core {
 			String iri1_str, 
 			String iri2_str) throws Exception{
 		
-		this(iri1_str, iri2_str, "", "", "", "", false, false, false, 0, false, false, false);
+		this(iri1_str, iri2_str, "", "", "", "", false, false, false, 0, false, false, false,"logmap2_mappings");
 		
 	}
 	
@@ -153,7 +154,7 @@ public class LogMap2Core {
 			boolean evaluate_impact,
 			String file_gs) throws Exception{
 		
-		this(iri1_str, iri2_str, "", "", file_gs, "", false, false, false, 0, false, false, evaluate_impact);
+		this(iri1_str, iri2_str, "", "", file_gs, "", false, false, false, 0, false, false, evaluate_impact,"logmap2_mappings");
 		
 	}
 	
@@ -169,7 +170,7 @@ public class LogMap2Core {
 			String iri2_str,
 			boolean evaluate_impact) throws Exception {
 		
-		this(iri1_str, iri2_str, "", "", "", "", false, false, false, 0, false, false, evaluate_impact); //eval impact
+		this(iri1_str, iri2_str, "", "", "", "", false, false, false, 0, false, false, evaluate_impact,"logmap2_mappings"); //eval impact
 		
 	}
 	
@@ -190,7 +191,7 @@ public class LogMap2Core {
 			String gs_file,
 			boolean evaluate_impact) throws Exception {
 		
-		this(iri1_str, iri2_str, "", "", gs_file, output_path, false, false, false, 0, false, false, evaluate_impact); //eval impact
+		this(iri1_str, iri2_str, "", "", gs_file, output_path, false, false, false, 0, false, false, evaluate_impact,"logmap2_mappings"); //eval impact
 		
 	}
 	
@@ -209,9 +210,11 @@ public class LogMap2Core {
 			String iri1_str, 
 			String iri2_str, 
 			String output_path,
-			boolean eval_impact) throws Exception{
+			boolean eval_impact,
+			String output_filename) throws Exception
+	{		
 		
-		this(iri1_str, iri2_str, "", "", "", output_path, false, false, false, 0, false, false, eval_impact);
+		this(iri1_str, iri2_str, "", "", "", output_path, false, false, false, 0, false, false, eval_impact,output_filename);
 		
 	}
 	
@@ -370,10 +373,13 @@ public class LogMap2Core {
 			int error_user,
 			boolean ask_everything,
 			boolean record_interactivity,
-			boolean evaluate_impact) throws Exception{
+			boolean evaluate_impact,
+			String logmap_mappings_filename) throws Exception{
 		
 		
 		this.logmap_mappings_path = logmap_mappings_path;
+		this.logmap_mappings_filename = logmap_mappings_filename;
+		
 		this.gs_mappings = gs_mappings;
 		//this.interactivityFile=interactivityFile;
 		
@@ -527,7 +533,11 @@ public class LogMap2Core {
 			
 			//Mapping OUTPUTFILES
 			LogOutput.print("Saving output mapping files");
-			saveExtractedMappings("logmap2_mappings");
+			if (this.logmap_mappings_filename.equals(""))
+			{
+				this.logmap_mappings_filename="logmap2_mappings";
+			}
+			saveExtractedMappings(this.logmap_mappings_filename); // "logmap2_mappings");
 		}
 		else{
 			//System.err.println("The given output path is not absolute or it does not exist. The output mappings cannot be stored.");
@@ -808,7 +818,9 @@ public class LogMap2Core {
 		
 		//We load both sets
 		lexicalUtilities.loadStopWords();
+		
 		lexicalUtilities.loadStopWordsExtended();
+		
 		
 		if (Parameters.use_umls_lexicon)
 			lexicalUtilities.loadUMLSLexiconResources();

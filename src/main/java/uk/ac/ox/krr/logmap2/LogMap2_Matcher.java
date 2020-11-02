@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 import uk.ac.ox.krr.logmap2.io.FlatAlignmentFormat;
+import uk.ac.ox.krr.logmap2.io.LogOutput;
 import uk.ac.ox.krr.logmap2.io.OutPutFilesManagerStatic;
 import uk.ac.ox.krr.logmap2.mappings.objects.MappingObjectStr;
 import uk.ac.ox.krr.logmap2.oaei.reader.MappingsReaderManager;
@@ -54,13 +55,17 @@ public class LogMap2_Matcher {
 	 * See uk.ac.ox.krr.logmap2.Parameters.java to adapt LogMap 2
 	 * 
 	 */
-	public LogMap2_Matcher(String iri_onto1, String iri_onto2, String output_path, boolean eval_impact){
+	public LogMap2_Matcher(String iri_onto1, String iri_onto2, String output_path,  boolean eval_impact,String output_filename)
+	{
 		
 		//LogOutput.showOutpuLog(true);
 		Parameters.readParameters();
 		
 		try {
-			logmap2 = new LogMap2Core(iri_onto1, iri_onto2, output_path, eval_impact);
+			
+			logmap2 = new LogMap2Core(iri_onto1, iri_onto2, output_path, eval_impact,output_filename);
+			
+			
 			createObjectMappings();
 			
 			//TODO save mappings
@@ -80,10 +85,13 @@ public class LogMap2_Matcher {
 	 * See uk.ac.ox.krr.logmap2.Parameters.java to adapt LogMap 2
 	 * 
 	 */
-	public LogMap2_Matcher(String iri_onto1, String iri_onto2, String reference, String output_path, boolean eval_impact){
+	public LogMap2_Matcher(String iri_onto1, String iri_onto2, String reference, String output_path, boolean eval_impact)
+	{
 		
-		this(iri_onto1, iri_onto2, output_path, eval_impact);
 		
+		this(iri_onto1, iri_onto2, output_path, eval_impact, "logmap2_mappings");
+		
+		System.out.println("LogMap2_Matcher beta");
 		try {
 			
 			MappingsReaderManager reader = new MappingsReaderManager(reference, MappingsReaderManager.OAEIFormat);
@@ -895,7 +903,7 @@ public class LogMap2_Matcher {
 			eval_impact=Boolean.valueOf(args[3]);
 		}
 
-		new LogMap2_Matcher(onto1, onto2, outputpath, eval_impact);
+		new LogMap2_Matcher(onto1, onto2, outputpath, eval_impact,"logmap2_mappings");
 		
 		
 	}
